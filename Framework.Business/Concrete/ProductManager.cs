@@ -3,13 +3,17 @@ using Framework.Business.ValidationRules.FluentValidation;
 using Framework.DataAccess.Abstract;
 using Framework.DataAccess.Context;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Framework.Core.Aspects.Postsharp;
 using Framework.Core.Aspects.Postsharp.ValidationAspects;
 using Framework.Core.Aspects.Postsharp.TransactionAspects;
 using Framework.Core.Aspects.Postsharp.CacheAspects;
+using Framework.Core.Aspects.Postsharp.ExceptionAspects;
 using Framework.Core.CrossCuttingConcerns.Caching.Microsoft;
+using Framework.Core.Aspects.Postsharp.LogAspects;
+using Framework.Core.CrossCuttingConcerns.Logging.log4net;
 
 namespace Framework.Business.Concrete
 {
@@ -23,11 +27,14 @@ namespace Framework.Business.Concrete
         /*
          *FluentValidationAspect
          */
-        [ValidationAspect(typeof(ProductValidator))]
+        //[ValidationAspect(typeof(ProductValidator))]
         /*
         *CacheRemoveAspect
         */
-        [CacheRemoveAspect(typeof(MemoryCacheManager))]
+        [CacheRemoveAspect(null,typeof(MemoryCacheManager))]
+        [LogAspect(typeof(DatabaseLogger))]
+        [LogAspect(typeof(FileLogger))]
+        [ExceptionAspect(typeof(DatabaseLogger))]
         public Product Add(Product entity)
         {
             return _productDal.Add(entity);
@@ -52,16 +59,17 @@ namespace Framework.Business.Concrete
          * CacheAspect
          */
         [CacheAspect(typeof(MemoryCacheManager))]
-        public IQueryable<Product> GetList()
+        [LogAspect(typeof(DatabaseLogger))]
+        [LogAspect(typeof(FileLogger))]
+        public List<Product> GetList()
         {
             return _productDal.GetList();
         }
 
-        public IQueryable<Product> GetList(Expression<Func<Product, bool>> filter)
+        public List<Product> GetList(Expression<Func<Product, bool>> filter)
         {
             return _productDal.GetList(filter);
         }
-
         /*
          * TransactionAspect
          */
@@ -74,7 +82,6 @@ namespace Framework.Business.Concrete
              */
             _productDal.Update(product2);
         }
-
         /*
          *FluentValidationAspect
          */

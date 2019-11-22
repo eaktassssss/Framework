@@ -1,0 +1,13 @@
+﻿@model Framework.DataAccess.Context.Product
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Add Product</h2>
+@using(Html.BeginForm("Add", "Product", FormMethod.Post))
+{
+    @Html.TextBoxFor(product => product.ProductName)
+    <button type="submit">KAYDET</button>
+}
+

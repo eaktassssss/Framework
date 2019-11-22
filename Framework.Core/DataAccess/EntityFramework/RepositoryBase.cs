@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace Framework.Core.DataAccess.EntityFramework
 {
-    public class RepositoryBase<TContext, TEntity> : IRepository<TEntity>
+    public class RepositoryBase<TContext, TEntity>: IRepository<TEntity>
         where TEntity : class, new()
         where TContext : DbContext, new()
     {
         public TEntity Add(TEntity entity)
         {
-            using (var context = new TContext())
+            using(var context = new TContext())
             {
                 var result = context.Set<TEntity>().Add(entity);
                 context.SaveChanges();
@@ -24,7 +25,7 @@ namespace Framework.Core.DataAccess.EntityFramework
 
         public void Delete(TEntity entity)
         {
-            using (var context = new TContext())
+            using(var context = new TContext())
             {
                 var result = context.Set<TEntity>().Remove(entity);
                 context.SaveChanges();
@@ -36,10 +37,10 @@ namespace Framework.Core.DataAccess.EntityFramework
 
         public void Delete(int id)
         {
-            using (var context = new TContext())
+            using(var context = new TContext())
             {
                 var entity = context.Set<TEntity>().Find(id);
-                if (entity != null)
+                if(entity != null)
                 {
                     context.Set<TEntity>().Remove(entity);
                     context.SaveChanges();
@@ -49,31 +50,31 @@ namespace Framework.Core.DataAccess.EntityFramework
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
-            using (var context = new TContext())
+            using(var context = new TContext())
             {
                 return context.Set<TEntity>().FirstOrDefault(filter);
             }
         }
 
-        public IQueryable<TEntity> GetList()
+        public List<TEntity> GetList()
         {
-            using (var context = new TContext())
+            using(var context = new TContext())
             {
-                return context.Set<TEntity>();
+                return context.Set<TEntity>().ToList();
             }
         }
 
-        public IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> filter)
+        public List<TEntity> GetList(Expression<Func<TEntity, bool>> filter)
         {
-            using (var context = new TContext())
+            using(var context = new TContext())
             {
-                return context.Set<TEntity>().Where(filter);
+                return context.Set<TEntity>().Where(filter).ToList();
             }
         }
 
         public TEntity Update(TEntity entity)
         {
-            using (var context = new TContext())
+            using(var context = new TContext())
             {
                 var result = context.Entry(entity);
                 result.State = EntityState.Modified;

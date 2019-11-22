@@ -75,6 +75,15 @@
     <Compile Include="Context\Product.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Role.cs">
+      <DependentUpon>FrameworkContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\User.cs">
+      <DependentUpon>FrameworkContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\UserRole.cs">
+      <DependentUpon>FrameworkContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

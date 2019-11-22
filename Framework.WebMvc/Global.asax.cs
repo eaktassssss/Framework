@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Framework.Business.Dependency.Ninject;
+using Framework.Core.Utilities.Mvc.Infrastructure;
 
 namespace Framework.WebMvc
 {
@@ -13,6 +15,7 @@ namespace Framework.WebMvc
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new NinjectBindModule()));
         }
     }
 }

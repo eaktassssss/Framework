@@ -2,6 +2,7 @@
 using Framework.DataAccess.Abstract;
 using Framework.DataAccess.Context;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -21,12 +22,12 @@ namespace Framework.Business.Concrete
             _categoryDal.Delete(entity);
         }
 
-        public IQueryable<Category> GetList()
+        public List<Category> GetList()
         {
             return _categoryDal.GetList();
         }
 
-        public IQueryable<Category> GetList(Expression<Func<Category, bool>> filter)
+        public List<Category> GetList(Expression<Func<Category, bool>> filter)
         {
             return _categoryDal.GetList(filter);
         }

@@ -8,6 +8,11 @@
         <EntityTypeShape EntityType="EaModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EaModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="EaModel.FK_Products_Categories" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EaModel.Role" Width="1.5" PointX="5.375" PointY="5.375" />
+        <EntityTypeShape EntityType="EaModel.UserRole" Width="1.5" PointX="7.625" PointY="1.125" />
+        <EntityTypeShape EntityType="EaModel.User" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="EaModel.FK_UserRoles_Roles" />
+        <AssociationConnector Association="EaModel.FK_UserRoles_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

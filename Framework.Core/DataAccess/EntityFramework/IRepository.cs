@@ -14,8 +14,8 @@ namespace Framework.Core.DataAccess.EntityFramework
          * Burada ihtiyaçlarımıza göre genişletebiliriz.
          */
         void Delete(T entity);
-        IQueryable<T> GetList();
-        IQueryable<T> GetList(Expression<Func<T, bool>> filter);
+        List<T> GetList();
+        List<T> GetList(Expression<Func<T, bool>> filter);
         T Get(Expression<Func<T, bool>> filter);
         T Add(T entity);
         T Update(T entity);
