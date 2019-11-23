@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -118,8 +119,9 @@
     <Content Include="log4net.config" />
     <None Include="packages.config" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\Product\Add.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -142,6 +144,10 @@
     <ProjectReference Include="..\Framework.DataAccess\Framework.DataAccess.csproj">
       <Project>{06de0a92-0787-48b1-9b42-6b72d371f33b}</Project>
       <Name>Framework.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.DTO\Framework.DTO.csproj">
+      <Project>{25AD3776-6AA8-41A9-8ABC-0E5704A1F6A7}</Project>
+      <Name>Framework.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

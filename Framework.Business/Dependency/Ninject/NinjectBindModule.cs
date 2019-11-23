@@ -6,7 +6,7 @@ using Ninject.Modules;
 
 namespace Framework.Business.Dependency.Ninject
 {
-    public class NinjectBindModule : NinjectModule
+    public class NinjectBindModule: NinjectModule
     {
         public override void Load()
         {
@@ -17,6 +17,8 @@ namespace Framework.Business.Dependency.Ninject
             Bind<IProductDal>().To<ProductDal>().InSingletonScope();
             Bind<ICategoryService>().To<CategoryManager>().InSingletonScope();
             Bind<ICategoryDal>().To<CategoryDal>().InSingletonScope();
+            Bind<IUserService>().To<UserManager>().InSingletonScope();
+            Bind<IUserDal>().To<UserDal>().InSingletonScope();
         }
     }
 }

@@ -72,8 +72,10 @@
     <Compile Include="Abstract\ICategoryService.cs" />
     <Compile Include="Abstract\IGenericService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
+    <Compile Include="Abstract\IUserService.cs" />
     <Compile Include="Concrete\CategoryManager.cs" />
     <Compile Include="Concrete\ProductManager.cs" />
+    <Compile Include="Concrete\UserManager.cs" />
     <Compile Include="Dependency\Ninject\NinjectBindModule.cs" />
     <Compile Include="Dependency\Ninject\ValidationModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +89,10 @@
     <ProjectReference Include="..\Framework.DataAccess\Framework.DataAccess.csproj">
       <Project>{06DE0A92-0787-48B1-9B42-6B72D371F33B}</Project>
       <Name>Framework.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.DTO\Framework.DTO.csproj">
+      <Project>{25AD3776-6AA8-41A9-8ABC-0E5704A1F6A7}</Project>
+      <Name>Framework.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

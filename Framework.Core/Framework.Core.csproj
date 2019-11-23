@@ -99,6 +99,7 @@
     <Compile Include="Aspects\Postsharp\CacheAspects\CacheRemoveAspect.cs" />
     <Compile Include="Aspects\Postsharp\ExceptionAspects\ExceptionAspect.cs" />
     <Compile Include="Aspects\Postsharp\LogAspects\LogAspect.cs" />
+    <Compile Include="Aspects\Postsharp\SecuredAspects\SecuredOperation.cs" />
     <Compile Include="Aspects\Postsharp\TransactionAspects\TransactionAspect.cs" />
     <Compile Include="Aspects\Postsharp\ValidationAspects\ValidationAspect.cs" />
     <Compile Include="CrossCuttingConcerns\Caching\ICacheManager.cs" />
@@ -108,6 +109,9 @@
     <Compile Include="CrossCuttingConcerns\Logging\log4net\FileLogger.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\log4net\LoggerService.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\log4net\LogParameter.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\AuthenticationHelper.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\CookieToIdentityObjectCast.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Identity.cs" />
     <Compile Include="DataAccess\EntityFramework\RepositoryBase.cs" />
     <Compile Include="DataAccess\EntityFramework\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

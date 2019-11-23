@@ -52,8 +52,10 @@
   <ItemGroup>
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IProductDal.cs" />
+    <Compile Include="Abstract\IUserDal.cs" />
     <Compile Include="Concrete\CategoryDal.cs" />
     <Compile Include="Concrete\ProductDal.cs" />
+    <Compile Include="Concrete\UserDal.cs" />
     <Compile Include="Context\Category.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>
@@ -90,6 +92,10 @@
     <ProjectReference Include="..\Framework.Core\Framework.Core.csproj">
       <Project>{50DD9E6C-2245-4E56-BDEC-972ABB1C6BF9}</Project>
       <Name>Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.DTO\Framework.DTO.csproj">
+      <Project>{25AD3776-6AA8-41A9-8ABC-0E5704A1F6A7}</Project>
+      <Name>Framework.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

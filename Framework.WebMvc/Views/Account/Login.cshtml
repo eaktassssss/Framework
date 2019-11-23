@@ -1,0 +1,25 @@
+﻿@model Framework.DataAccess.Context.User
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Login</title>
+    </head>
+    <body>
+        <div>
+            @using(Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
+               @Html.TextBoxFor(x=> x.UserName)
+                <br/>
+                @Html.PasswordFor(x=> x.Password)
+                <br/>
+                <button type="submit">Login</button>
+            }
+        </div>
+    </body>
+</html>

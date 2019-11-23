@@ -13,6 +13,7 @@ using Framework.Core.Aspects.Postsharp.CacheAspects;
 using Framework.Core.Aspects.Postsharp.ExceptionAspects;
 using Framework.Core.CrossCuttingConcerns.Caching.Microsoft;
 using Framework.Core.Aspects.Postsharp.LogAspects;
+using Framework.Core.Aspects.Postsharp.SecuredAspects;
 using Framework.Core.CrossCuttingConcerns.Logging.log4net;
 
 namespace Framework.Business.Concrete
@@ -61,6 +62,7 @@ namespace Framework.Business.Concrete
         [CacheAspect(typeof(MemoryCacheManager))]
         [LogAspect(typeof(DatabaseLogger))]
         [LogAspect(typeof(FileLogger))]
+        [SecuredOperation(Roles="Admin")]
         public List<Product> GetList()
         {
             return _productDal.GetList();
