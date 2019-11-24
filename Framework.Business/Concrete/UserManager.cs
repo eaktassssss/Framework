@@ -51,7 +51,7 @@ namespace Framework.Business.Concrete
             _userDal.Delete(id);
         }
 
-        public List<UserRoleDto> GetUserRoles(User user)
+        public List<UserRolesDto> GetUserRoles(User user)
         {
            return _userDal.GetUserRoles(user);
         }

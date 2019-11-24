@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Framework.DTO.Account
 {
-    public class UserRoleDto
+    public class UserRolesDto
     {
         public string RoleName { get; set; }
     }

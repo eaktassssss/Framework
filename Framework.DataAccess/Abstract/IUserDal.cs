@@ -7,6 +7,6 @@ namespace Framework.DataAccess.Abstract
 {
     public interface IUserDal: IRepository<User>
     {
-        List<UserRoleDto> GetUserRoles(User user);
+        List<UserRolesDto> GetUserRoles(User user);
     }
 }

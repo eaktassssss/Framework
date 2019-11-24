@@ -15,10 +15,15 @@ namespace Framework.WebMvc
     {
         protected void Application_Start()
         {
+            
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new NinjectBindModule()));
         }
+        /*
+         * AutoMapper  Asp.Net Mvc Konfigürasyonu
+         */
+    
         /*
          * Burada Init medtodu ile PostAuthenticateRequest event'ini yakalýyoruz(Handle ediyoruz)
          * Gelen bütün requestlerde burada ilk AuthenticationTicket iþlemlerini yapýyor olacaðýz

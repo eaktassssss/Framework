@@ -32,10 +32,10 @@ namespace Framework.Business.Concrete
         /*
         *CacheRemoveAspect
         */
-        [CacheRemoveAspect(null,typeof(MemoryCacheManager))]
-        [LogAspect(typeof(DatabaseLogger))]
-        [LogAspect(typeof(FileLogger))]
-        [ExceptionAspect(typeof(DatabaseLogger))]
+        //[CacheRemoveAspect(null,typeof(MemoryCacheManager))]
+        //[LogAspect(typeof(DatabaseLogger))]
+        //[LogAspect(typeof(FileLogger))]
+        //[ExceptionAspect(typeof(DatabaseLogger))]
         public Product Add(Product entity)
         {
             return _productDal.Add(entity);

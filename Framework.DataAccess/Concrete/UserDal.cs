@@ -9,7 +9,7 @@ namespace Framework.DataAccess.Concrete
 {
     public class UserDal: RepositoryBase<FrameworkContext, User>, IUserDal
     {
-        public List<UserRoleDto> GetUserRoles(User user)
+        public List<UserRolesDto> GetUserRoles(User user)
         {
             using(var context = new FrameworkContext())
             {
@@ -18,7 +18,7 @@ namespace Framework.DataAccess.Concrete
                                  role in context.Roles on
                                  userRole.RoleId equals role.Id
                              where userRole.UserId == user.Id
-                             select new UserRoleDto
+                             select new UserRolesDto
                              {
                                  RoleName = role.Name
                              };
@@ -26,4 +26,6 @@ namespace Framework.DataAccess.Concrete
             }
         }
     }
+
+    
 }
