@@ -2,14 +2,15 @@
 using Framework.DataAccess.Abstract;
 using Framework.DataAccess.Context;
 using Framework.DTO.Account;
+using Framework.DTO.Users;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Framework.DataAccess.Concrete
 {
-    public class UserDal: RepositoryBase<FrameworkContext, User>, IUserDal
+    public class UserDal: RepositoryBase<FrameworkContext, Users>, IUserDal
     {
-        public List<UserRolesDto> GetUserRoles(User user)
+        public List<UserRolesDto> GetUserRoles(UserDto user)
         {
             using(var context = new FrameworkContext())
             {

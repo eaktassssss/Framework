@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Framework.Business.ValidationRules.FluentValidation
 {
-    public class ProductValidator : AbstractValidator<Product>
+    public class ProductValidator : AbstractValidator<Products>
     {
         /*
          * Ürün modeli doğrulama kurallarını belirledik. İhtiyaca göre geliştirilebilir.

@@ -1,5 +1,6 @@
 ﻿using Framework.Business.Abstract;
 using Framework.DataAccess.Context;
+using Framework.DTO.Products;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -11,7 +12,7 @@ namespace Framework.WebApi.Controllers
     /// Ninject.MVC5 paketlerinin kurulumları gereklidir.
     /// Buna bağlı olarak kurulan paketlerden olan WebAActivatorEx paket  App-Start içine Ninject.Web.Common class'ı oluşturur web dependency injection bağımlılıkları burada tanımlanır.
     /// </summary>
-    public class ProductsController: ApiController
+    public class ProductsController : ApiController
     {
         private IProductService _productService;
         public ProductsController(IProductService productService)
@@ -19,7 +20,7 @@ namespace Framework.WebApi.Controllers
             _productService = productService;
         }
         [HttpGet]
-        public List<Product> GetList()
+        public List<ProductDto> GetList()
         {
             return _productService.GetList();
         }

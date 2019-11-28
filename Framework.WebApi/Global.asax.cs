@@ -1,3 +1,5 @@
+using AutoMapper;
+using Framework.Business.Mapping.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,16 @@ namespace Framework.WebApi
     {
         protected void Application_Start()
         {
+            AutoMapperConfiguration.Configure();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+        }
+
+        public class AutoMapperConfiguration
+        {
+            public static void Configure()
+            {
+                Mapper.Initialize(config => config.AddProfile(new AutoMapperProfile()));
+            }
         }
     }
 }

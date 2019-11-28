@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Framework.DTO.Account;
+using Framework.DTO.Users;
+using AutoMapper;
 
 namespace Framework.Business.Concrete
 {
@@ -16,34 +18,36 @@ namespace Framework.Business.Concrete
         {
             _userDal = userDal;
         }
-        public void Delete(User entity)
+        public void Delete(UserDto entity)
         {
-            _userDal.Delete(entity);
+            _userDal.Delete(Mapper.Map<Users>(entity));
         }
 
-        public List<User> GetList()
+        public List<UserDto> GetList()
         {
-            return _userDal.GetList();
+            return Mapper.Map<List<UserDto>>(_userDal.GetList());
         }
 
-        public List<User> GetList(Expression<Func<User, bool>> filter)
+        public List<UserDto> GetList(Expression<Func<Users, bool>> filter)
         {
-            return _userDal.GetList(filter);
+            return Mapper.Map<List<UserDto>>(_userDal.GetList(filter));
         }
 
-        public User Get(Expression<Func<User, bool>> filter)
+        public UserDto Get(Expression<Func<Users, bool>> filter)
         {
-            return _userDal.Get(filter);
+            return Mapper.Map<UserDto>(_userDal.Get(filter));
         }
 
-        public User Add(User entity)
+        public UserDto Add(UserDto entity)
         {
-            return _userDal.Add(entity);
+            var model = Mapper.Map<Users>(entity);
+            return Mapper.Map<UserDto>(_userDal.Add(model));
         }
 
-        public User Update(User entity)
+        public UserDto Update(UserDto entity)
         {
-            return _userDal.Update(entity);
+            var model = Mapper.Map<Users>(entity);
+            return Mapper.Map<UserDto>( _userDal.Update(model));
         }
 
         public void Delete(int id)
@@ -51,7 +55,7 @@ namespace Framework.Business.Concrete
             _userDal.Delete(id);
         }
 
-        public List<UserRolesDto> GetUserRoles(User user)
+        public List<UserRolesDto> GetUserRoles(UserDto user)
         {
            return _userDal.GetUserRoles(user);
         }

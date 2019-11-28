@@ -1,13 +1,14 @@
 ﻿using Framework.Business.Abstract;
 using Framework.Core.CrossCuttingConcerns.Security;
 using Framework.DataAccess.Context;
+using Framework.DTO.Users;
 using System;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Framework.WebMvc.Controllers
 {
-    public class AccountController: Controller
+    public class AccountController : Controller
     {
         private IUserService _userService;
 
@@ -22,14 +23,14 @@ namespace Framework.WebMvc.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(User user)
+        public ActionResult Login(UserDto user)
         {
             string[] arrayRoles;
             var getUser = _userService.Get(model => model.UserName == user.UserName && model.Password == user.Password);
-            if(getUser != null)
+            if (getUser != null)
             {
                 var roles = _userService.GetUserRoles(getUser);
-                if(roles != null)
+                if (roles != null)
                 {
                     AuthenticationHelper
                     .CreateAuthenticationCookie(Guid.NewGuid(), getUser.UserName, getUser.Email, DateTime.Now.AddDays(5)

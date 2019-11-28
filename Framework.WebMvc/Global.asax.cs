@@ -1,4 +1,6 @@
+using AutoMapper;
 using Framework.Business.Dependency.Ninject;
+using Framework.Business.Mapping.AutoMapper;
 using Framework.Core.CrossCuttingConcerns.Security;
 using Framework.Core.Utilities.Mvc.Infrastructure;
 using System;
@@ -11,11 +13,11 @@ using System.Web.Security;
 
 namespace Framework.WebMvc
 {
-    public class MvcApplication: System.Web.HttpApplication
+    public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
-            
+            AutoMapperConfiguration.Configure();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new NinjectBindModule()));
@@ -23,7 +25,14 @@ namespace Framework.WebMvc
         /*
          * AutoMapper  Asp.Net Mvc Konfigürasyonu
          */
-    
+
+        public class AutoMapperConfiguration
+        {
+            public static void Configure()
+            {
+                Mapper.Initialize(config => config.AddProfile(new AutoMapperProfile()));
+            }
+        }
         /*
          * Burada Init medtodu ile PostAuthenticateRequest event'ini yakalýyoruz(Handle ediyoruz)
          * Gelen bütün requestlerde burada ilk AuthenticationTicket iþlemlerini yapýyor olacaðýz
@@ -43,7 +52,7 @@ namespace Framework.WebMvc
             *Cookie deðerini okuyoruz.
             */
                 var cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
-                if(cookie == null)
+                if (cookie == null)
                 {
                     return;
                 }
@@ -51,7 +60,7 @@ namespace Framework.WebMvc
                  * FormsAuthentication.Encrypt() þifreleyip oluþturduðumuz ticket'ýn deðerini alýyoruz
                  */
                 var encrypt = cookie.Value;
-                if(String.IsNullOrEmpty(encrypt))
+                if (String.IsNullOrEmpty(encrypt))
                 {
                     return;
                 }
@@ -71,7 +80,8 @@ namespace Framework.WebMvc
 
                 HttpContext.Current.User = princibal;
                 Thread.CurrentPrincipal = princibal;
-            } catch
+            }
+            catch
             {
             }
 

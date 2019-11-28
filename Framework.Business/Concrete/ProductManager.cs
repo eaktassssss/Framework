@@ -1,20 +1,11 @@
 ﻿using Framework.Business.Abstract;
-using Framework.Business.ValidationRules.FluentValidation;
 using Framework.DataAccess.Abstract;
 using Framework.DataAccess.Context;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using Framework.Core.Aspects.Postsharp;
-using Framework.Core.Aspects.Postsharp.ValidationAspects;
-using Framework.Core.Aspects.Postsharp.TransactionAspects;
-using Framework.Core.Aspects.Postsharp.CacheAspects;
-using Framework.Core.Aspects.Postsharp.ExceptionAspects;
-using Framework.Core.CrossCuttingConcerns.Caching.Microsoft;
-using Framework.Core.Aspects.Postsharp.LogAspects;
-using Framework.Core.Aspects.Postsharp.SecuredAspects;
-using Framework.Core.CrossCuttingConcerns.Logging.log4net;
+using Framework.DTO.Products;
+using AutoMapper;
 
 namespace Framework.Business.Concrete
 {
@@ -25,58 +16,32 @@ namespace Framework.Business.Concrete
         {
             _productDal = productDal;
         }
-        /*
-         *FluentValidationAspect
-         */
-        //[ValidationAspect(typeof(ProductValidator))]
-        /*
-        *CacheRemoveAspect
-        */
-        //[CacheRemoveAspect(null,typeof(MemoryCacheManager))]
-        //[LogAspect(typeof(DatabaseLogger))]
-        //[LogAspect(typeof(FileLogger))]
-        //[ExceptionAspect(typeof(DatabaseLogger))]
-        public Product Add(Product entity)
+        public ProductDto Add(ProductDto entity)
         {
-            return _productDal.Add(entity);
+            var model = Mapper.Map<Products>(entity);
+            return Mapper.Map<ProductDto>(_productDal.Add(model));
         }
-
-        public void Delete(Product entity)
+        public void Delete(ProductDto entity)
         {
-            _productDal.Delete(entity);
+            _productDal.Delete(Mapper.Map<Products>(entity));
         }
-
         public void Delete(int id)
         {
             _productDal.Delete(id);
         }
-
-        public Product Get(Expression<Func<Product, bool>> filter)
+        public ProductDto Get(Expression<Func<Products, bool>> filter)
         {
-            return _productDal.Get(filter);
+            return Mapper.Map<ProductDto>(_productDal.Get(filter));
         }
-
-        /*
-         * CacheAspect
-         */
-        [CacheAspect(typeof(MemoryCacheManager))]
-        [LogAspect(typeof(DatabaseLogger))]
-        [LogAspect(typeof(FileLogger))]
-        [SecuredOperation(Roles="Admin")]
-        public List<Product> GetList()
+        public List<ProductDto> GetList()
         {
-            return _productDal.GetList();
+            return Mapper.Map<List<ProductDto>>(_productDal.GetList());
         }
-
-        public List<Product> GetList(Expression<Func<Product, bool>> filter)
+        public List<ProductDto> GetList(Expression<Func<Products, bool>> filter)
         {
-            return _productDal.GetList(filter);
+            return Mapper.Map<List<ProductDto>>(_productDal.GetList(filter));
         }
-        /*
-         * TransactionAspect
-         */
-        [TransactionAspect]
-        public void TransactionTestMethod(Product product1, Product product2)
+        public void TransactionTestMethod(Products product1, Products product2)
         {
             _productDal.Add(product1);
             /*
@@ -84,13 +49,10 @@ namespace Framework.Business.Concrete
              */
             _productDal.Update(product2);
         }
-        /*
-         *FluentValidationAspect
-         */
-        [ValidationAspect(typeof(ProductValidator))]
-        public Product Update(Product entity)
+        public ProductDto Update(ProductDto entity)
         {
-            return _productDal.Update(entity);
+            var model = Mapper.Map<Products>(entity);
+            return Mapper.Map<ProductDto>(_productDal.Update(model));
         }
     }
 }

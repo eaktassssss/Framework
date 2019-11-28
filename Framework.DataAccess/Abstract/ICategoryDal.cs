@@ -1,8 +1,8 @@
-﻿using Framework.Core.DataAccess.EntityFramework;
-using Framework.DataAccess.Context;
+﻿using Framework.DataAccess.Context;
+using Framework.Core.DataAccess.EntityFramework;
 namespace Framework.DataAccess.Abstract
 {
-    public interface ICategoryDal:IRepository<Category>
+    public interface ICategoryDal:IRepository<Categories>
     {
     }
 }

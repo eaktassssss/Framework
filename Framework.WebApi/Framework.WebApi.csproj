@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -157,6 +160,10 @@
     <ProjectReference Include="..\Framework.DataAccess\Framework.DataAccess.csproj">
       <Project>{06DE0A92-0787-48B1-9B42-6B72D371F33B}</Project>
       <Name>Framework.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.DTO\Framework.DTO.csproj">
+      <Project>{A141E794-2EF3-40C2-98F4-C0A2E4B8DE40}</Project>
+      <Name>Framework.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Framework.DataAccess.Concrete
 {
-    public class CategoryDal:RepositoryBase<FrameworkContext,Category>,ICategoryDal
+    public class CategoryDal:RepositoryBase<FrameworkContext,Categories>,ICategoryDal
     {
     }
 }

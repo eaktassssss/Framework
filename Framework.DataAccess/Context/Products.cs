@@ -12,7 +12,7 @@ namespace Framework.DataAccess.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Products
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
@@ -25,6 +25,6 @@ namespace Framework.DataAccess.Context
         public Nullable<short> ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
     
-        public virtual Category Category { get; set; }
+        public virtual Categories Categories { get; set; }
     }
 }

@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="551fab324b45410da8ce21cc35b7c55f" Name="Diagram1">
-        <EntityTypeShape EntityType="EaModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EaModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="0a355e0bceed4c9cb6eb65e288b4db2a" Name="Diagram1">
+        <EntityTypeShape EntityType="EaModel.Categories" Width="1.5" PointX="2.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EaModel.Products" Width="1.5" PointX="5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="EaModel.Roles" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EaModel.UserRoles" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EaModel.Users" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="EaModel.FK_Products_Categories" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="EaModel.Role" Width="1.5" PointX="5.375" PointY="5.375" />
-        <EntityTypeShape EntityType="EaModel.UserRole" Width="1.5" PointX="7.625" PointY="1.125" />
-        <EntityTypeShape EntityType="EaModel.User" Width="1.5" PointX="5.375" PointY="1" />
-        <AssociationConnector Association="EaModel.FK_UserRoles_Roles" />
-        <AssociationConnector Association="EaModel.FK_UserRoles_Users" />
+        <AssociationConnector Association="EaModel.FK_UserRoles_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="EaModel.FK_UserRoles_Users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

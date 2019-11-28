@@ -57,7 +57,7 @@
     <Compile Include="Concrete\CategoryDal.cs" />
     <Compile Include="Concrete\ProductDal.cs" />
     <Compile Include="Concrete\UserDal.cs" />
-    <Compile Include="Context\Category.cs">
+    <Compile Include="Context\Categories.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\FrameworkContext.Context.cs">
@@ -75,23 +75,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FrameworkContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Context\Product.cs">
+    <Compile Include="Context\Products.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Role.cs">
+    <Compile Include="Context\Roles.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\User.cs">
+    <Compile Include="Context\UserRoles.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\UserRole.cs">
+    <Compile Include="Context\Users.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.Core\Framework.Core.csproj">
-      <Project>{50DD9E6C-2245-4E56-BDEC-972ABB1C6BF9}</Project>
+      <Project>{50dd9e6c-2245-4e56-bdec-972abb1c6bf9}</Project>
       <Name>Framework.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework.DTO\Framework.DTO.csproj">
@@ -101,32 +101,30 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Context\FrameworkContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FrameworkContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Context\FrameworkContext.edmx.diagram">
       <DependentUpon>FrameworkContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Context\FrameworkContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FrameworkContext.Context.cs</LastGenOutput>
       <DependentUpon>FrameworkContext.edmx</DependentUpon>
+      <LastGenOutput>FrameworkContext.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Context\FrameworkContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FrameworkContext.edmx</DependentUpon>
       <LastGenOutput>FrameworkContext.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

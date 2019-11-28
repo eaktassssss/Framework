@@ -1,6 +1,8 @@
-﻿using Framework.Business.Abstract;
+﻿using AutoMapper;
+using Framework.Business.Abstract;
 using Framework.DataAccess.Abstract;
 using Framework.DataAccess.Context;
+using Framework.DTO.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace Framework.Business.Concrete
 {
-    public class CategoryManager: ICategoryService
+    public class CategoryManager : ICategoryService
     {
         private ICategoryDal _categoryDal;
 
@@ -17,39 +19,43 @@ namespace Framework.Business.Concrete
             _categoryDal = categoryDal;
         }
 
-        public void Delete(Category entity)
+        public CategoryDto Add(CategoryDto entity)
         {
-            _categoryDal.Delete(entity);
+            var model = Mapper.Map<Categories>(entity);
+            return Mapper.Map<CategoryDto>(_categoryDal.Add(model));
         }
 
-        public List<Category> GetList()
+        public void Delete(CategoryDto entity)
         {
-            return _categoryDal.GetList();
-        }
+            _categoryDal.Delete(Mapper.Map<Categories>(entity));
 
-        public List<Category> GetList(Expression<Func<Category, bool>> filter)
-        {
-            return _categoryDal.GetList(filter);
-        }
-
-        public Category Get(Expression<Func<Category, bool>> filter)
-        {
-            return _categoryDal.Get(filter);
-        }
-
-        public Category Add(Category entity)
-        {
-            return _categoryDal.Add(entity);
-        }
-
-        public Category Update(Category entity)
-        {
-            return _categoryDal.Update(entity);
         }
 
         public void Delete(int id)
         {
             _categoryDal.Delete(id);
+
+        }
+
+        public CategoryDto Get(Expression<Func<Categories, bool>> filter)
+        {
+            return Mapper.Map<CategoryDto>(_categoryDal.Get(filter));
+        }
+
+        public List<CategoryDto> GetList()
+        {
+            return Mapper.Map<List<CategoryDto>>(_categoryDal.GetList());
+        }
+
+        public List<CategoryDto> GetList(Expression<Func<Categories, bool>> filter)
+        {
+            return Mapper.Map<List<CategoryDto>>(_categoryDal.GetList(filter));
+        }
+
+        public CategoryDto Update(CategoryDto entity)
+        {
+            var model = Mapper.Map<Categories>(entity);
+            return Mapper.Map<CategoryDto>(_categoryDal.Update(model));
         }
     }
 }

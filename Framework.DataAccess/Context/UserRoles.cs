@@ -12,13 +12,13 @@ namespace Framework.DataAccess.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class UserRole
+    public partial class UserRoles
     {
         public int Id { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<int> RoleId { get; set; }
+        public int UserId { get; set; }
+        public int RoleId { get; set; }
     
-        public virtual Role Role { get; set; }
-        public virtual User User { get; set; }
+        public virtual Roles Roles { get; set; }
+        public virtual Users Users { get; set; }
     }
 }
