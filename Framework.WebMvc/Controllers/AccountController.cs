@@ -1,6 +1,7 @@
 ﻿using Framework.Business.Abstract;
 using Framework.Core.CrossCuttingConcerns.Security;
 using Framework.DataAccess.Context;
+using Framework.DTO.Account;
 using Framework.DTO.Users;
 using System;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace Framework.WebMvc.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(UserDto user)
+        public ActionResult Login(LoginDto user)
         {
             string[] arrayRoles;
             var getUser = _userService.Get(model => model.UserName == user.UserName && model.Password == user.Password);

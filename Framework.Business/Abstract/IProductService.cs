@@ -11,6 +11,7 @@ namespace Framework.Business.Abstract
 {
     public interface IProductService
     {
+        List<ProductListDto> GetProductList(Expression<Func<ProductListDto, bool>> filter = null);
         void Delete(ProductDto entity);
         List<ProductDto> GetList();
         List<ProductDto> GetList(Expression<Func<Products, bool>> filter);
@@ -18,6 +19,5 @@ namespace Framework.Business.Abstract
         ProductDto Add(ProductDto entity);
         ProductDto Update(ProductDto entity);
         void Delete(int id);
-        void TransactionTestMethod(Products product1, Products product2);
     }
 }

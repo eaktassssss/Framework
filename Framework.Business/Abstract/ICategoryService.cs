@@ -17,5 +17,6 @@ namespace Framework.Business.Abstract
         CategoryDto Add(CategoryDto entity);
         CategoryDto Update(CategoryDto entity);
         void Delete(int id);
+        List<CategoryDto> GetCategoryDropdownList();
     }
 }

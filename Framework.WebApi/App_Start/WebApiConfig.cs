@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Framework.WebApi.MessageHandlers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -9,9 +10,13 @@ namespace Framework.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-
-            // Web API routes
+            /*
+             * Yazmış olduğumuz AuthenticationHandler burada tanıtıyoruz.
+             * Artık gelen bütün isteklerde ilk bu handler devreye girecek ve  request üzerinden kontrolleri  yapmamızı sağlayacak
+             * mekanizma ayağa kalkmış olucak
+             */
+            config.MessageHandlers.Add(new AuthenticationHandler());
+           
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

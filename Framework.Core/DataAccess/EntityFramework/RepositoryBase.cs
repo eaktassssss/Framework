@@ -10,6 +10,7 @@ namespace Framework.Core.DataAccess.EntityFramework
         where TEntity : class, new()
         where TContext : DbContext, new()
     {
+        DbSet<Type> _dbSet;
         public TEntity Add(TEntity entity)
         {
             using(var context = new TContext())
@@ -48,6 +49,7 @@ namespace Framework.Core.DataAccess.EntityFramework
             }
         }
 
+        
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
             using(var context = new TContext())

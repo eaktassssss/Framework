@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Framework.DTO.Products;
 using AutoMapper;
+using Framework.Core.Aspects.Postsharp.SecuredAspects;
 
 namespace Framework.Business.Concrete
 {
@@ -21,6 +22,19 @@ namespace Framework.Business.Concrete
             var model = Mapper.Map<Products>(entity);
             return Mapper.Map<ProductDto>(_productDal.Add(model));
         }
+
+        public List<ProductListDto> GetProductList(Expression<Func<ProductListDto, bool>> filter = null)
+        {
+            try
+            {
+                var result  = _productDal.GetList(filter);
+                return result;
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+        }
         public void Delete(ProductDto entity)
         {
             _productDal.Delete(Mapper.Map<Products>(entity));
@@ -33,6 +47,7 @@ namespace Framework.Business.Concrete
         {
             return Mapper.Map<ProductDto>(_productDal.Get(filter));
         }
+        
         public List<ProductDto> GetList()
         {
             return Mapper.Map<List<ProductDto>>(_productDal.GetList());
@@ -40,14 +55,6 @@ namespace Framework.Business.Concrete
         public List<ProductDto> GetList(Expression<Func<Products, bool>> filter)
         {
             return Mapper.Map<List<ProductDto>>(_productDal.GetList(filter));
-        }
-        public void TransactionTestMethod(Products product1, Products product2)
-        {
-            _productDal.Add(product1);
-            /*
-             * Diğer iş kodlarımız
-             */
-            _productDal.Update(product2);
         }
         public ProductDto Update(ProductDto entity)
         {

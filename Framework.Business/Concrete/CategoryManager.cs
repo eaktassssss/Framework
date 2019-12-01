@@ -37,6 +37,12 @@ namespace Framework.Business.Concrete
 
         }
 
+        public List<CategoryDto> GetCategoryDropdownList()
+        {
+            var result = _categoryDal.GetCategoryDropdownList();
+            return result;
+        }
+
         public CategoryDto Get(Expression<Func<Categories, bool>> filter)
         {
             return Mapper.Map<CategoryDto>(_categoryDal.Get(filter));
