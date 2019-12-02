@@ -1,109 +1,92 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Ürün Yönetimi</title>
-    <!-- Custom fonts for this template-->
-    <link href="~/Content/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="~/Content/admin/css/sb-admin-2.min.css" rel="stylesheet" />
-    <link href="~/Content/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <title>Ürün Yönetim Sistemi</title>
+    <link href="~/Content/Theme/template/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css" rel="stylesheet" />
+    <link href="~/Content/Theme/template/vendors/css/vendor.bundle.base.css" rel="stylesheet" />
+    <link href="~/Content/Theme/template/vendors/css/vendor.bundle.addons.css" rel="stylesheet" />
+    <link href="~/Content/Theme/template/css/style.css" rel="stylesheet" />
+    <link href="~/Content/Theme/template/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="images/favicon.png" />
 </head>
-<body id="page-top">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-            </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Kullanıcı İşlemleri</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("List","Product")">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Ürün İşlemleri</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Çıkış Yap</span>
-                </a>
-            </li>
-        </ul>
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
+<body>
+    <div class="container-scroller">
+        <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+            <div class="nav-top flex-grow-1">
+                <div class="container d-flex flex-row h-100">
+                    <div class="text-center navbar-brand-wrapper d-flex align-items-top">
+                        <a class="navbar-brand brand-logo" href="index-2.html"><img src="~/Content/Theme/template/images/logo.svg" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="~/Content/Theme/template/images/logo-mini.svg" alt="logo" /></a>
+                    </div>
+                    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                        <form class="search-field" action="#">
+                            <div class="form-group mb-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="search">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="icon-magnifier"></i></span>
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="container-fluid">
-                    @RenderBody()
-                </div>
-            </div>
-
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
+                        </form>
+                        <ul class="navbar-nav navbar-nav-right mr-0">
+                            <li class="nav-item nav-profile">
+                                <a class="nav-link" href="#">
+                                    <span class="nav-profile-text">Hello Andre Rivera</span>
+                                    <img src="~/Content/Theme/template/images/faces/face1.jpg" class="rounded-circle" alt="profile" />
+                                </a>
+                            </li>
+                        </ul>
+                        <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                            <span class="icon-menu text-white"></span>
+                        </button>
                     </div>
                 </div>
-            </footer>
+            </div>
+            <div class="nav-bottom">
+                <div class="container">
+                    <ul class="nav page-navigation">
+                        <li class="nav-item">
+                            <a href="@Url.Action("List","Product")" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span style="font-size: 12px;font-weight:bold" class="menu-title">Ürünler Listesi</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Add","Product")" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span style="font-size: 12px;font-weight:bold" class="menu-title">Yeni Ürün Ekle</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Add","Product")" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span style="font-size: 12px;font-weight:bold" class="menu-title">Kullanıcı Listesi</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Add","Product")" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span style="font-size: 12px;font-weight:bold" class="menu-title">Yeni Kullanıcı Ekle</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Add","Product")" class="nav-link"><i class="link-icon icon-screen-desktop"></i><span style="font-size: 12px;font-weight:bold" class="menu-title">Çıkış Yap</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+                <footer class="footer">
+                    <div class="w-100 clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+                    </div>
+                </footer>
+            </div>
         </div>
     </div>
-    <script src="~/Content/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Content/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Content/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="~/Content/admin/js/sb-admin-2.min.js"></script>
-    <script src="~/Content/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Content/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Content/admin/js/demo/datatables-demo.js"></script>
+    <script src="~/Content/Theme/template/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Content/Theme/template/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="~/Content/Theme/template/js/template.js"></script>
+    <script src="~/Content/Theme/template/js/dashboard.js"></script>
+    <script src="~/Content/Theme/template/js/todolist.js"></script>
 </body>
 </html>
