@@ -17,7 +17,7 @@ namespace Framework.Core.CrossCuttingConcerns.Security
             var ticket = new FormsAuthenticationTicket(1, userName, DateTime.Now, expiration, remember,
                 CreateUserDataFormatText(email, roles, firstName, lastName, id));
             var encryptTicket = FormsAuthentication.Encrypt(ticket);
-            HttpContext.Current.Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptTicket));
+            HttpContext.Current.Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName,encryptTicket));
         }
         /*
          * FormsAuthenticationTicket parametrelerinden userData kısmına göndereceğimiz extra dataları belli bir formatta çevirme işlemi

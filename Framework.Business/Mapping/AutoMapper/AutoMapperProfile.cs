@@ -8,15 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Framework.Business.Extensions.Mapper.AutoMapper;
 
 namespace Framework.Business.Mapping.AutoMapper
 {
-    public class AutoMapperProfile:Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
-            CreateMap<Categories,CategoryDto>();
-            CreateMap<ProductDto, ProductDto>();
+            CreateMap<CategoryDto, Categories>();
+            CreateMap<ProductDto, Products>().IgnoreVirtualPropertyDestination<ProductDto, Products>();
             CreateMap<Users, UserDto>();
         }
     }

@@ -54,9 +54,11 @@
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IProductDal.cs" />
     <Compile Include="Abstract\IUserDal.cs" />
+    <Compile Include="Abstract\IUserRolesDal.cs" />
     <Compile Include="Concrete\CategoryDal.cs" />
     <Compile Include="Concrete\ProductDal.cs" />
     <Compile Include="Concrete\UserDal.cs" />
+    <Compile Include="Concrete\UserRolesDal.cs" />
     <Compile Include="Context\Categories.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>

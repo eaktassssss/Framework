@@ -19,7 +19,6 @@ namespace Framework.Business.ValidationRules.FluentValidation
             RuleFor(product => product.CategoryID).NotEmpty().WithMessage("Kategori zorunlu alan");
             RuleFor(product => product.ProductName).NotEmpty().WithMessage("Ürün ismi zorunlu alan");
             RuleFor(product => product.UnitPrice).GreaterThan(0).WithMessage("Fiyat alanı 0 dan büyük olmalı");
-            RuleFor(product => product.QuantityPerUnit).NotEmpty().WithMessage("Miktar zorunlu alan");
         }
     }
 }

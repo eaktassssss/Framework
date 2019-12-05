@@ -1,4 +1,5 @@
-﻿using Framework.Core.DataAccess.EntityFramework;
+﻿using System;
+using Framework.Core.DataAccess.EntityFramework;
 using Framework.DataAccess.Abstract;
 using Framework.DataAccess.Context;
 using Framework.DTO.Account;
@@ -10,7 +11,11 @@ namespace Framework.DataAccess.Concrete
 {
     public class UserDal: RepositoryBase<FrameworkContext, Users>, IUserDal
     {
-        public List<UserRolesDto> GetUserRoles(UserDto user)
+        /*
+         * Bu method kullanıcı login olurken o kullanıcıya ait RoleName'lerini döner 
+         * Daha sonra bu roleName'ler  ticket oluşturma esnasında encrypt edip cookie eklenir ve pricipal'a atanır.
+         */
+        public List<RoleNamesDto> GetUserRoleNames(UserDto user)
         {
             using(var context = new FrameworkContext())
             {
@@ -19,7 +24,7 @@ namespace Framework.DataAccess.Concrete
                                  role in context.Roles on
                                  userRole.RoleId equals role.Id
                              where userRole.UserId == user.Id
-                             select new UserRolesDto
+                             select new RoleNamesDto
                              {
                                  RoleName = role.Name
                              };
@@ -27,6 +32,4 @@ namespace Framework.DataAccess.Concrete
             }
         }
     }
-
-    
 }

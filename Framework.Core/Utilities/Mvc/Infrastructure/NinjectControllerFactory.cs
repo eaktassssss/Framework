@@ -11,7 +11,6 @@ namespace Framework.Core.Utilities.Mvc.Infrastructure
         /*
          * Default Controller'mızı yazıyoruz 
          */
-
         private IKernel _kernel;
         public NinjectControllerFactory(INinjectModule module)
         {

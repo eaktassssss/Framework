@@ -16,6 +16,10 @@ namespace Framework.Business.Abstract
         UserDto Add(UserDto entity);
         UserDto Update(UserDto entity);
         void Delete(int id);
-        List<UserRolesDto> GetUserRoles(UserDto user);
+        /*
+         * Bu method kullanıcı login olurken o kullanıcıya ait RoleName'lerini döner 
+         * Daha sonra bu roleName'ler  ticket oluşturma esnasında encrypt edip cookie eklenir ve pricipal'a atanır.
+         */
+        List<RoleNamesDto> GetUserRoleNames(UserDto user);
     }
 }

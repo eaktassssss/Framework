@@ -10,54 +10,104 @@ using AutoMapper;
 
 namespace Framework.Business.Concrete
 {
-    public class UserManager: IUserService
+    public class UserManager : IUserService
     {
         private readonly IUserDal _userDal;
-
-        public UserManager(IUserDal userDal)
+        private readonly IUserRolesService _userRolesService;
+        public UserManager(IUserDal userDal, IUserRolesService userRolesService)
         {
             _userDal = userDal;
+            _userRolesService = userRolesService;
         }
         public void Delete(UserDto entity)
         {
-            _userDal.Delete(Mapper.Map<Users>(entity));
+            try
+            {
+                var user = _userDal.Get(x => x.Id == entity.Id);
+                if (user != null)
+                {
+                    var userRoles = _userRolesService.GetList(x => x.UserId == user.Id);
+                    if (userRoles != null)
+                    {
+                        foreach (var userRole in userRoles)
+                        {
+                            _userRolesService.Delete(userRole.Id);
+                        }
+                        _userDal.Delete(user);
+                        return;
+                    }
+                    _userDal.Delete(user);
+                }
+            }
+            catch (Exception exception)
+            {
+
+                throw new Exception(exception.Message);
+            }
+
         }
 
         public List<UserDto> GetList()
         {
-            return Mapper.Map<List<UserDto>>(_userDal.GetList());
+            return Mapper.Map<List<UserDto>>(this._userDal.GetList());
         }
 
         public List<UserDto> GetList(Expression<Func<Users, bool>> filter)
         {
-            return Mapper.Map<List<UserDto>>(_userDal.GetList(filter));
+            return Mapper.Map<List<UserDto>>(this._userDal.GetList(filter));
         }
 
         public UserDto Get(Expression<Func<Users, bool>> filter)
         {
-            return Mapper.Map<UserDto>(_userDal.Get(filter));
+            return Mapper.Map<UserDto>(this._userDal.Get(filter));
         }
 
         public UserDto Add(UserDto entity)
         {
             var model = Mapper.Map<Users>(entity);
-            return Mapper.Map<UserDto>(_userDal.Add(model));
+            return Mapper.Map<UserDto>(this._userDal.Add(model));
         }
 
         public UserDto Update(UserDto entity)
         {
             var model = Mapper.Map<Users>(entity);
-            return Mapper.Map<UserDto>( _userDal.Update(model));
+            return Mapper.Map<UserDto>(this._userDal.Update(model));
         }
 
         public void Delete(int id)
         {
-            _userDal.Delete(id);
-        }
+            try
+            {
+                var user = _userDal.Get(x => x.Id == id);
+                if (user != null)
+                {
+                    var userRoles = _userRolesService.GetList(x => x.UserId == user.Id);
+                    if (userRoles != null)
+                    {
+                        foreach (var userRole in userRoles)
+                        {
+                            _userRolesService.Delete(userRole.Id);
+                        }
+                        _userDal.Delete(user);
+                        return;
+                    }
+                    _userDal.Delete(user);
+                }
+            }
+            catch (Exception exception)
+            {
 
-        public List<UserRolesDto> GetUserRoles(UserDto user)
+                throw new Exception(exception.Message);
+            }
+
+        }
+        /*
+       * Bu method kullanıcı login olurken o kullanıcıya ait RoleName'lerini döner 
+       * Daha sonra bu roleName'ler  ticket oluşturma esnasında encrypt edip cookie eklenir ve pricipal'a atanır.
+       */
+        public List<RoleNamesDto> GetUserRoleNames(UserDto user)
         {
-           return _userDal.GetUserRoles(user);
+            return _userDal.GetUserRoleNames(user);
         }
     }
 }

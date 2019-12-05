@@ -2,3 +2,67 @@
 @{
     Layout = null;
 }
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Flare Premium Bootstrap Admin Dashboard Template</title>
+    <!-- plugins:css -->
+    <link href="~/Content/Theme/template/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css" rel="stylesheet" />
+
+    <link href="~/Content/Theme/template/vendors/css/vendor.bundle.base.css" rel="stylesheet" />
+    <link href="~/Content/Theme/template/vendors/css/vendor.bundle.addons.css" rel="stylesheet" />
+
+    <link href="~/Content/Theme/template/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+                <div class="row w-100 mx-auto">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auto-form-wrapper">
+                            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                            {
+
+                                <div class="form-group">
+                                    <label class="label">Kullanıcı adı</label>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(login => login.UserName, new { @class = "form-control", @placeholder = "Kullanıcı adı" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Parola</label>
+                                    <div class="input-group">
+                                        <div class="input-group">
+                                            @Html.PasswordFor(login => login.Password, new { @class = "form-control", @placeholder = "***********" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary submit-btn btn-block">Giriş</button>
+                                </div>
+                            }
+
+                        </div>
+                        <ul class="auth-footer">
+                            <li><a href="#">Conditions</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Terms</a></li>
+                        </ul>
+                        <p class="footer-text text-center">copyright © 2018 Urbanui. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Theme/template/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Content/Theme/template/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="~/Content/Theme/template/js/template.js"></script>
+</body>
+</html>

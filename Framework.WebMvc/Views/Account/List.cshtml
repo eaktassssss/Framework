@@ -1,0 +1,50 @@
+﻿@using Framework.DTO.Users;
+@model List<UserDto>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Kullanıcılar Listesi</h4>
+        <div class="row">
+            <div class="col-12 table-responsive">
+                <table id="order-listing" class="table">
+                    <thead>
+                        <tr>
+                            <th>Kayıt Numarası</th>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>Email</th>
+                            <th>İşlem</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.Id</td>
+                                <td>@user.FirstName</td>
+                                <td>@user.LastName</td>
+
+                                <td>@user.Email</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Account",new {id=user.Id})">
+                                        <button type="button" class="btn btn-danger btn-xs">Kaldır</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Update", "Account", new {id = user.Id})">
+                                        <button type="button" class="btn btn-primary btn-xs">Düzenle</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

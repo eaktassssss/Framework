@@ -24,14 +24,10 @@ namespace Framework.DataAccess.Concrete
                              select new ProductListDto
                              {
                                  CategoryName = category.CategoryName,
-                                 Discontinued = product.Discontinued,
                                  ProductID = product.ProductID,
                                  ProductName = product.ProductName,
-                                 QuantityPerUnit = product.QuantityPerUnit ,
-                                 ReorderLevel = (short)product.ReorderLevel,
                                  UnitPrice = (decimal)product.UnitPrice,
                                  UnitsInStock = (short)product.UnitsInStock,
-                                 UnitsOnOrder = (short)product.UnitsOnOrder
                              };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
             }

@@ -45,7 +45,8 @@ namespace Framework.Business.Concrete
         }
         public ProductDto Get(Expression<Func<Products, bool>> filter)
         {
-            return Mapper.Map<ProductDto>(_productDal.Get(filter));
+            var model = _productDal.Get(filter);
+            return Mapper.Map<ProductDto>(model);
         }
         
         public List<ProductDto> GetList()

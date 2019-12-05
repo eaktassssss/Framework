@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Framework.DataAccess">
+      <HintPath>..\Framework.WebApi\Bin\Framework.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\LoginDto.cs" />
+    <Compile Include="Account\RoleNamesDto.cs" />
     <Compile Include="Account\UserRolesDto.cs" />
+    <Compile Include="Account\UserRolesListDto.cs" />
     <Compile Include="Categories\CategoryDto.cs" />
     <Compile Include="Products\ProductDto.cs" />
     <Compile Include="Products\ProductListDto.cs" />

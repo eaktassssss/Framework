@@ -114,6 +114,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ErrorPage\colorlib-error-404-4\css\style.css" />
+    <Content Include="Content\ErrorPage\colorlib-error-404-4\index.html" />
+    <Content Include="Content\ErrorPage\colorlib-error-404-4\readme.txt" />
+    <Content Include="Content\ErrorPage\__MACOSX\colorlib-error-404-4\._index.html" />
+    <Content Include="Content\ErrorPage\__MACOSX\colorlib-error-404-4\._readme.txt" />
+    <Content Include="Content\ErrorPage\__MACOSX\colorlib-error-404-4\css\._style.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\Theme\images\auth\login_1.html" />
     <Content Include="Content\Theme\images\auth\login_2.html" />
@@ -941,6 +947,8 @@
     <Content Include="Content\Theme\template\vendors\summernote\dist\font\summernote291f.ttf" />
     <Content Include="Content\Theme\template\vendors\summernote\dist\font\summernote291f.woff" />
     <Content Include="Content\Theme\template\vendors\summernote\dist\font\summernoted41d.eot" />
+    <Content Include="Content\ErrorPage\__MACOSX\._colorlib-error-404-4" />
+    <Content Include="Content\ErrorPage\__MACOSX\colorlib-error-404-4\._css" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -1051,6 +1059,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Product\Update.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\ErrorPage.cshtml" />
+    <Content Include="Views\Account\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
