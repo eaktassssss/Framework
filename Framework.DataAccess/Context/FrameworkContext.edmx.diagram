@@ -13,6 +13,7 @@
         <AssociationConnector Association="EaModel.FK_UserRoles_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="EaModel.Products" Width="1.5" PointX="5" PointY="4.375" />
         <AssociationConnector Association="EaModel.FK_Products_Categories" />
+        <EntityTypeShape EntityType="EaModel.Logs" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

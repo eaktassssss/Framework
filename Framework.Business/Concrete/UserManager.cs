@@ -82,7 +82,7 @@ namespace Framework.Business.Concrete
                 if (user != null)
                 {
                     var userRoles = _userRolesService.GetList(x => x.UserId == user.Id);
-                    if (userRoles != null)
+                    if (userRoles.Count>0)
                     {
                         foreach (var userRole in userRoles)
                         {

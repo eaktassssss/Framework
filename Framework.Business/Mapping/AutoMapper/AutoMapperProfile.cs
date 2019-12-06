@@ -18,7 +18,7 @@ namespace Framework.Business.Mapping.AutoMapper
         {
             CreateMap<CategoryDto, Categories>();
             CreateMap<ProductDto, Products>().IgnoreVirtualPropertyDestination<ProductDto, Products>();
-            CreateMap<Users, UserDto>();
+            CreateMap<UserDto, Users>().IgnoreVirtualPropertyDestination<UserDto, Users>();
         }
     }
 }

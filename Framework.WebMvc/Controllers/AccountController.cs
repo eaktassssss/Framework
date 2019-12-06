@@ -43,13 +43,13 @@ namespace Framework.WebMvc.Controllers
 
 
         [HttpGet]
-        public ActionResult Register()
+        public ActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register(UserDto user)
+        public ActionResult Add(UserDto user)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Framework.WebMvc.Controllers
             return View("ErrorPage");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             try
@@ -81,11 +81,46 @@ namespace Framework.WebMvc.Controllers
                 _userService.Delete(id);
                 return RedirectToAction("List", "Account");
             }
+            catch(Exception exception)
+            {
+                return View("ErrorPage");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            try
+            {
+                var user = _userService.Get(x => x.Id == id);
+                if (user !=null)
+                {
+                    return View(user);
+                }
+                return View("ErrorPage");
+            }
             catch
             {
                 return View("ErrorPage");
             }
-          
+        }
+
+        [HttpPost]
+        public ActionResult Update(UserDto user)
+        {
+            try
+            {
+               var result  = _userService.Update(user);
+               if (result!=null)
+               {
+                   return RedirectToAction("List", "Account");
+               }
+               return View(user);
+            }
+            catch
+            {
+                return View("ErrorPage");
+            }
         }
     }
 }

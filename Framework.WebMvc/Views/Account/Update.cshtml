@@ -1,0 +1,72 @@
+﻿@using System.Collections
+@model Framework.DTO.Users.UserDto
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ürün Bilgileri</h4>
+            @using (Html.BeginForm("Update", "Account", new { @class = "form-sample" }))
+            {
+                @Html.HiddenFor(user => user.Id)
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Kullanıcı adı</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(user => user.UserName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ad</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(user => user.FirstName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Soyad</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(user => user.LastName, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(user => user.Email, new { @class = "form-control", @placeholder = "example@example.com" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Parola</label>
+                            <div class="col-sm-9">
+                                @Html.PasswordFor(user => user.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <button type="submit" style="float: right" class="btn btn-success">Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

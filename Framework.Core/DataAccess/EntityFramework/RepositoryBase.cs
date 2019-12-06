@@ -28,11 +28,11 @@ namespace Framework.Core.DataAccess.EntityFramework
         {
             using(var context = new TContext())
             {
-                var result = context.Set<TEntity>().Remove(entity);
-                context.SaveChanges();
-                //var result = context.Entry(entity);
-                //result.State = EntityState.Deleted;
+                //var result = context.Set<TEntity>().Remove(entity);
                 //context.SaveChanges();
+                var result = context.Entry(entity);
+                result.State = EntityState.Deleted;
+                context.SaveChanges();
             }
         }
 

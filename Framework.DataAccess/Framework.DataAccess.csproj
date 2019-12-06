@@ -77,6 +77,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FrameworkContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Context\Logs.cs">
+      <DependentUpon>FrameworkContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Products.cs">
       <DependentUpon>FrameworkContext.tt</DependentUpon>
     </Compile>

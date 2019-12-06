@@ -30,5 +30,6 @@ namespace Framework.DataAccess.Context
         public virtual DbSet<UserRoles> UserRoles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Logs> Logs { get; set; }
     }
 }

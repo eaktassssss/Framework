@@ -37,7 +37,7 @@ namespace Framework.Core.Aspects.Postsharp.CacheAspects
         }
         public override void OnInvoke(MethodInterceptionArgs args)
         {
-            /*
+            /*Framework.Business.Concrete.ProductManager.GetProductList,
              * Key oluşturma Namespace, Class ismi ve method ismini alıyoruz
              */
             var metodName = string.Format("{0}.{1}.{2},", args.Method.ReflectedType.Namespace, args.Method.ReflectedType.Name, args.Method.Name);
@@ -60,11 +60,21 @@ namespace Framework.Core.Aspects.Postsharp.CacheAspects
             {
                 args.ReturnValue = _cacheManager.Get<object>(key);
             }
-            base.OnInvoke(args);
+            else
+            {
+                /*
+                 * Burada args.Proceed(); ile  ilerle diyoruz ve  daha sonra businnes içindeki  method  çalışıtırılıp  daha sonra cache  ekleniyor.
+                 * Aslında  args.Proceed();  gidip  business içindeki methoda ilerlememizi  sağlıyor  ve  daha sonra cache  ekleme  işlemini  add metodu yapıyor
+                 */
+                args.Proceed();
+                _cacheManager.Add(key, args.ReturnValue, _time);
+              
+            }
+          
             /*
              * Eğer  Cache içinde Yok ise  ekliyoruz
              */
-            _cacheManager.Add(key, args.ReturnValue, _time);
+           
         }
     }
 }
