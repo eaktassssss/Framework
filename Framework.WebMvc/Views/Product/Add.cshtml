@@ -7,6 +7,16 @@
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+<style>
+    .errorMessage {
+        color: red;
+        font-weight: bold;
+        font-size: 9px
+    }
+</style>
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <div class="col-12 grid-margin">
     <div class="card">
         <div class="card-body">
@@ -19,6 +29,9 @@
                             <label class="col-sm-3 col-form-label">Ürün İsmi</label>
                             <div class="col-sm-9">
                                 @Html.TextBoxFor(product => product.ProductName, new { @class = "form-control" })
+                                <span class="errorMessage">
+                                    @Html.ValidationMessageFor(message => message.ProductName)
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -36,8 +49,10 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Tutar</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(product => product.UnitPrice, new { @class = "form-control" })
-
+                                @Html.TextBoxFor(product => product.UnitPrice, new { @class = "form-control", @placeholder = "0" })
+                                <span class="errorMessage">
+                                    @Html.ValidationMessageFor(message => message.UnitPrice)
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -46,22 +61,25 @@
                             <label class="col-sm-3 col-form-label">Stok</label>
                             <div class="col-sm-9">
                                 @Html.TextBoxFor(product => product.UnitsInStock, new { @class = "form-control" })
+                                <span class="errorMessage">
+                                    @Html.ValidationMessageFor(message => message.UnitsInStock)
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group row">
-                            
+
                             <div class="col-sm-12">
                                 <button type="submit" class="btn btn-success">Gönder</button>
                             </div>
                         </div>
                     </div>
                 </div>
-               
+
             }
         </div>
     </div>

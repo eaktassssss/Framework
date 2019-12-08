@@ -4,16 +4,19 @@ using Framework.DataAccess.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Web.ModelBinding;
 using Framework.DTO.Products;
 using AutoMapper;
+ 
 using Framework.Core.Aspects.Postsharp.CacheAspects;
 using Framework.Core.Aspects.Postsharp.LogAspects;
+using Framework.Core.Aspects.Postsharp.SecuredAspects;
 using Framework.Core.CrossCuttingConcerns.Caching.Microsoft;
 using Framework.Core.CrossCuttingConcerns.Logging.log4net;
 
 namespace Framework.Business.Concrete
 {
-
+    [SecuredOperation(Roles ="Admin,Editor")]
     public class ProductManager : IProductService
     {
         private IProductDal _productDal;
@@ -21,7 +24,6 @@ namespace Framework.Business.Concrete
         {
             _productDal = productDal;
         }
-
 
         [LogAspect(typeof(FileLogger))]
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
@@ -32,7 +34,7 @@ namespace Framework.Business.Concrete
         }
 
 
-
+        [LogAspect(typeof(FileLogger))]
         [CacheAspect(typeof(MemoryCacheManager))]
         public List<ProductListDto> GetProductList(Expression<Func<ProductListDto, bool>> filter = null)
         {
@@ -48,7 +50,7 @@ namespace Framework.Business.Concrete
         }
 
 
-
+        [LogAspect(typeof(FileLogger))]
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public void Delete(ProductDto entity)
         {
@@ -56,7 +58,7 @@ namespace Framework.Business.Concrete
         }
 
 
-
+        [LogAspect(typeof(FileLogger))]
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public void Delete(int id)
         {
@@ -78,7 +80,7 @@ namespace Framework.Business.Concrete
             return Mapper.Map<List<ProductDto>>(_productDal.GetList(filter));
         }
 
-
+        [LogAspect(typeof(FileLogger))]
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public ProductDto Update(ProductDto entity)
         {

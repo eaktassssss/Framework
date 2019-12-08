@@ -4,7 +4,12 @@ using Framework.Business.Abstract;
 using Framework.DataAccess.Context;
 using Framework.DTO.Products;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web.Mvc;
+using FluentValidation;
+using Framework.Business.Filters;
+ 
+
 namespace Framework.WebMvc.Controllers
 {
     public class ProductController : Controller
@@ -29,17 +34,13 @@ namespace Framework.WebMvc.Controllers
         public ActionResult Add(ProductDto product)
         {
             TempData["CategoryList"] = _categoryService.GetCategoryDropdownList();
-            try
+            if (!ModelState.IsValid)
+                return View(product);
+            else
             {
                 _productService.Add(product);
                 return RedirectToAction("List", "Product");
             }
-            catch (Exception exception)
-            {
-
-                throw new Exception(exception.Message);
-            }
-
         }
         [HttpGet]
         public ActionResult List()

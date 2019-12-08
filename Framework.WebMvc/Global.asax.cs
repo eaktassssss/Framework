@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+ 
 
 namespace Framework.WebMvc
 {
@@ -21,11 +22,11 @@ namespace Framework.WebMvc
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new NinjectBindModule()));
+          
         }
         /*
          * AutoMapper  Asp.Net Mvc Konfigürasyonu
          */
-
         public class AutoMapperConfiguration
         {
             public static void Configure()

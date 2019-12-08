@@ -7,9 +7,11 @@ using System.Linq.Expressions;
 using Framework.DTO.Account;
 using Framework.DTO.Users;
 using AutoMapper;
+using Framework.Core.Aspects.Postsharp.SecuredAspects;
 
 namespace Framework.Business.Concrete
 {
+    [SecuredOperation(Roles = "Admin")]
     public class UserManager : IUserService
     {
         private readonly IUserDal _userDal;

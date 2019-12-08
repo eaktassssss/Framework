@@ -42,9 +42,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.8.2.0\lib\net45\FluentValidation.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -102,10 +99,8 @@
     <Compile Include="Aspects\Postsharp\LogAspects\LogAspect.cs" />
     <Compile Include="Aspects\Postsharp\SecuredAspects\SecuredOperation.cs" />
     <Compile Include="Aspects\Postsharp\TransactionAspects\TransactionAspect.cs" />
-    <Compile Include="Aspects\Postsharp\ValidationAspects\ValidationAspect.cs" />
     <Compile Include="CrossCuttingConcerns\Caching\ICacheManager.cs" />
     <Compile Include="CrossCuttingConcerns\Caching\Microsoft\MemoryCacheManager.cs" />
-    <Compile Include="CrossCuttingConcerns\FluentValidation\ValidatorTool.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\log4net\DatabaseLogger.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\log4net\FileLogger.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\log4net\LoggerService.cs" />
